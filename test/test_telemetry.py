@@ -1,12 +1,16 @@
 import filecmp
+import importlib
 import os
+import sys
 from glob import glob
 
 import pytest
 
-import src.telemetry as telemetry
-
 TEST_DIR = os.path.dirname(__file__)
+PROJECT_DIR = os.path.dirname(TEST_DIR)
+
+sys.path.insert(0, PROJECT_DIR)
+telemetry = importlib.import_module(".telemetry", "src")
 
 
 @pytest.mark.parametrize(
